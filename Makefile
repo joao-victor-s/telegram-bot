@@ -7,7 +7,7 @@ MONGO = mongo
 
 # Start all services (bot + mongo)
 up:
-	$(COMPOSE) up --build
+	$(COMPOSE) up --build -d
 
 # Stop and remove all services
 down:
