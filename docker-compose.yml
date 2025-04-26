@@ -10,6 +10,9 @@ services:
     depends_on:
       - mongo
     restart: unless-stopped
+    environment:
+      - CHROME_BIN=/usr/bin/chromium
+      - PATH=/usr/lib/chromium:$PATH
 
   mongo:
     image: mongo:latest
