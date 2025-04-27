@@ -1,16 +1,19 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 def get_news(topic):
+    chrome_service = Service("/usr/bin/chromedriver")
     options = Options()
+    options.binary_location = "/usr/bin/chromium"
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
 
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(service=chrome_service, options=options)
 
     try:
         search_url = f"https://www.google.com/search?q={topic}&tbm=nws"
@@ -37,7 +40,7 @@ def get_news(topic):
                 "link": link,
                 "snippet": snippet
             })
-            
+
         return news_results
 
     finally:
