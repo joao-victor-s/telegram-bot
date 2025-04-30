@@ -13,11 +13,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"Fala, {user.first_name}! Bem-vindo ao universo FURIA! Use /news para ver as notícias mais brabas do time."
     )
 
-async def unrecognized_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        f"Infelizmente não temos essa funcionalidade ainda... Mas teste um dos nossos campos:\n/news - Notícias mais recentes da FURIA."
-    )
-
 async def news(update: Update, context: ContextTypes.DEFAULT_TYPE):
     news_list = get_news("furia cs")
     for idx, news in enumerate(news_list, 1):
