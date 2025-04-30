@@ -1,5 +1,5 @@
-from telegram.ext import CommandHandler, MessageHandler, filters
-from bot.commands import unrecognized_command, start, news, matchs
+from telegram.ext import CommandHandler, MessageHandler, filters, CallbackQueryHandler
+from bot.commands import start, news, matchs, button_handler
 
 def register_handlers(application):
         application.add_handler(CommandHandler("start", start))
@@ -7,4 +7,4 @@ def register_handlers(application):
         application.add_handler(CommandHandler("news", news))
         application.add_handler(CommandHandler("matchs", matchs))
 
-
+        application.add_handler(CallbackQueryHandler(button_handler))
